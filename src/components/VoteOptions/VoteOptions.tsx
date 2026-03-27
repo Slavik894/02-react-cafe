@@ -1,9 +1,10 @@
+import type { VoteType } from "../../types/votes";
 import css from "./VoteOptions.module.css"
 
 
 interface VoteOptionsProps{
-    onVote: React.MouseEvent<HTMLButtonElement>;
-    onReset: React.MouseEvent<HTMLButtonElement>;
+    onVote: (type: VoteType)=> void;
+    onReset: ()=> void;
     canReset: boolean;
 }
 

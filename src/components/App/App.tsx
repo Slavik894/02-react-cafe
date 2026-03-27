@@ -13,16 +13,20 @@ export default function App() {
     bad: 0
 });
 
-  function handleVoteType(type: VoteType){
-    
+ function handleVoteType(type: VoteType){
+    setVotes((oldVotes)=>({
+       ...oldVotes,
+      [type]: oldVotes[type]+1
+    }));
+  function resetVotes(){
+    setVotes({good: 0, neutral: 0, bad: 0})
   };
-  function resetVotes(){};
 
 
   return(
     <div className={css.app}>
     <CafeInfo />
-    <VoteOptions />
+    <VoteOptions onVote={handleVoteType} onReset={resetVotes}/>
   </div>
   )
   
