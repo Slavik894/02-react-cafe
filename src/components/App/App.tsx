@@ -4,6 +4,7 @@ import CafeInfo from '../CafeInfo/CafeInfo'
 import type Votes from '../../types/votes';
 import type { VoteType } from '../../types/votes';
 import VoteOptions from '../VoteOptions/VoteOptions';
+import VoteStats from '../VoteStats/VoteStats';
 
 
 export default function App() {
@@ -17,7 +18,8 @@ export default function App() {
     setVotes((oldVotes)=>({
        ...oldVotes,
       [type]: oldVotes[type]+1
-    }));
+    }))};
+    
   function resetVotes(){
     setVotes({good: 0, neutral: 0, bad: 0})
   };
@@ -26,7 +28,8 @@ export default function App() {
   return(
     <div className={css.app}>
     <CafeInfo />
-    <VoteOptions onVote={handleVoteType} onReset={resetVotes}/>
+    <VoteOptions onVote={handleVoteType} onReset={resetVotes} canReset={true}/>
+    <VoteStats/>
   </div>
   )
   
